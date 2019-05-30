@@ -45,6 +45,7 @@ Step 3: revise parameter settings and run "train.sh" and "predict.sh" for traini
 Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at: (will update later)
 
     sceneflow (for fine-tuning, only 10 epoch):
+    -google drive: https://drive.google.com/open?id=1VkcBGkA_pXolgLhrWdpZPwfvzhQfWWJQ
   
     kitti2012 (after fine-tuning):
     
