@@ -1,6 +1,6 @@
-CUDA_VISIBLE_DEVICES=4,5,6,7 python train.py --batchSize=8 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
                 --crop_height=240 \
-                --crop_width=672 \
+                --crop_width=528 \
                 --thread=16 \
                 --data_path='/ssd1/zhangfeihu/data/stereo/' \
                 --training_list='lists/sceneflow_train.list' \
@@ -10,7 +10,7 @@ CUDA_VISIBLE_DEVICES=4,5,6,7 python train.py --batchSize=8 \
 
 exit
 #Fine tuning for kitti 2015
-python train.py --batchSize=16 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
                 --crop_height=240 \
                 --crop_width=528 \
                 --thread=16 \
@@ -22,7 +22,7 @@ python train.py --batchSize=16 \
                 --resume='./checkpoint/sceneflow_epoch_10.pth' \
                 --nEpochs=800 2>&1 |tee logs/log_finetune_kitti2015.txt
 
-python train.py --batchSize=8 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=8 \
                 --crop_height=240 \
                 --crop_width=1248 \
                 --thread=16 \
@@ -37,7 +37,7 @@ python train.py --batchSize=8 \
 
 #Fine tuning for kitti 2012
 
-python train.py --batchSize=16 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
                 --crop_height=240 \
                 --crop_width=528 \
                 --thread=16 \
@@ -49,7 +49,7 @@ python train.py --batchSize=16 \
                 --resume='./checkpoint/sceneflow_epoch_10.pth' \
                 --nEpochs=800 2>&1 |tee logs/log_finetune2_kitti.txt
 
-python train.py --batchSize=8 \
+CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=8 \
                 --crop_height=240 \
                 --crop_width=1248 \
                 --thread=16 \
