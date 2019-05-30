@@ -190,21 +190,21 @@ if __name__ == '__main__':
         if opt.kitti or opt.kitti2015:
             if epoch%50 == 0 and epoch >= 300:
                 save_checkpoint(opt.save_path, epoch,{
-                        'epoch': epoch + 1,
+                        'epoch': epoch,
                         'state_dict': model.state_dict(),
                         'optimizer' : optimizer.state_dict(),
                     }, is_best)
         else:
             if epoch>=8:
                 save_checkpoint(opt.save_path, epoch,{
-                        'epoch': epoch + 1,
+                        'epoch': epoch,
                         'state_dict': model.state_dict(),
                         'optimizer' : optimizer.state_dict(),
                     }, is_best)
 
 
     save_checkpoint(opt.save_path, opt.nEpochs,{
-            'epoch': opt.nEpochs + 1,
+            'epoch': opt.nEpochs,
             'state_dict': model.state_dict(),
             'optimizer' : optimizer.state_dict(),
         }, is_best)
