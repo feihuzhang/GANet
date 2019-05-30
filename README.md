@@ -42,7 +42,7 @@ Step 3: revise parameter settings and run "train.sh" and "predict.sh" for traini
 
 ## Pretrained models:
 
-Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at:
+Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at: (will update later)
 
     sceneflow (for fine-tuning, only 10 epoch):
   
@@ -52,7 +52,7 @@ Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at:
 
 ## Results:
 
-The results are slightly better than those reported in the paper.
+The results should be better than those reported in the paper.
 
 ## Reference:
 
