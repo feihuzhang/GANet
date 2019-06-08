@@ -7,9 +7,9 @@ GA-Net: Guided Aggregation Net for End-to-end Stereo Matching
 ## Brief Introduction
 We are formulating traditional geometric and optimization of stereo into deep neural networks ...
 
-## Materials for the Oral Presentation 
+## Oral Presentation 
 
-[Slides](http://www.feihuzhang.com/GANet/GANet.pptx), [Videos](https://www.youtube.com/watch?v=tpyrxcGL_Zg&feature=youtu.be), Poster
+[Slides](http://www.feihuzhang.com/GANet/GANet.pptx), [Video](https://www.youtube.com/watch?v=tpyrxcGL_Zg&feature=youtu.be), Poster
 
 
 ## Building Requirements:
