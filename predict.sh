@@ -5,7 +5,7 @@ python predict.py --crop_height=384 \
                   --test_list='lists/kitti2015_test.list' \
                   --save_path='./result/' \
                   --kitti2015=1 \
-                  --resume='./checkpoint/finetune2_kitti2015_epoch_8.pth'
+                  --resume='./checkpoint/kitti2015_final.pth'
 exit
 
 python predict.py --crop_height=384 \
@@ -14,7 +14,7 @@ python predict.py --crop_height=384 \
                   --test_list='lists/kitti2012_test.list' \
                   --save_path='./result/' \
                   --kitti=1 \
-                  --resume='./checkpoint/finetune2_kitti_epoch_8.pth'
+                  --resume='./checkpoint/kitti2012_final.pth'
 
 
 
