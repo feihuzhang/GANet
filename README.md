@@ -1,6 +1,6 @@
 # GANet
 
-GA-Net: Guided Aggregation Net for End-to-end Stereo Matching
+[GA-Net: Guided Aggregation Net for End-to-end Stereo Matching](https://arxiv.org/pdf/1904.06587.pdf)
 
 <img align="center" src="http://www.feihuzhang.com/GANet/GANet.jpg">
 
