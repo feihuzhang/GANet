@@ -2,7 +2,17 @@
 
 GA-Net: Guided Aggregation Net for End-to-end Stereo Matching
 
-## Requirements:
+<img align="center" src="http://www.feihuzhang.com/GANet/GANet.jpg">
+
+## Brief Introduction
+We are formulating traditional geometric and optimization of stereo into deep neural networks ...
+
+## Materials for the Oral Presentation 
+
+[Slides](http://www.feihuzhang.com/GANet/GANet.pptx), [Videos](https://www.youtube.com/watch?v=tpyrxcGL_Zg&feature=youtu.be), Poster
+
+
+## Building Requirements:
 
     gcc: >=5.3
     GPU mem: >=7G (for testing);  >=12G (for training, >=22G is prefered)
@@ -46,7 +56,7 @@ Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at: (w
 
 | sceneflow (for fine-tuning, only 10 epoch) | kitti2012 (after fine-tuning) | kitti2015 (after fine-tuning)|
 |---|---|---|
-|[Google Drive](https://drive.google.com/open?id=1VkcBGkA_pXolgLhrWdpZPwfvzhQfWWJQ)|||
+|[Google Drive](https://drive.google.com/open?id=1VkcBGkA_pXolgLhrWdpZPwfvzhQfWWJQ)||[Google Drive](https://drive.google.com/open?id=19hVQXpcXwp7SrHgJ5Tlu7_iCYNi4Oj9u)|
 
 ## Results:
 
@@ -62,4 +72,3 @@ If you find the code useful, please cite our paper:
       booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
       year={2019}
     }
-
