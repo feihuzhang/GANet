@@ -47,7 +47,7 @@ step 2: download and prepare the dataset
 	
     download and extract kitti and kitti2015 datasets.
         
-Step 3: revise parameter settings and run "train.sh" and "predict.sh" for training, finetuning and prediction/testing.
+Step 3: revise parameter settings and run "train.sh" and "predict.sh" for training, finetuning and prediction/testing. Note that the “crop_width” and “crop_height” must be multiple of 48.
 
 
 ## Pretrained models:
