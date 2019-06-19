@@ -62,7 +62,7 @@ Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at: (w
 
 The results of the deep model are better than those reported in the paper.
 
-#### Evaluations and Comparisons on SceneFlow Dataset
+#### Evaluations and Comparisons on SceneFlow Dataset (only 10 epoches)
 |Models|3D conv layers|GA layers |Avg. EPE (pixel)|1-pixel Error rate (%)|
 |---|---|---|---|---|
 |GC-Net|19|-|1.8|15.6|
