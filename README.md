@@ -9,7 +9,7 @@ We are formulating traditional geometric and optimization of stereo into deep ne
 
 ## Oral Presentation 
 
-[Slides](http://www.feihuzhang.com/GANet/GANet.pptx), [Video](https://www.youtube.com/watch?v=tpyrxcGL_Zg&feature=youtu.be), Poster
+[Slides](http://www.feihuzhang.com/GANet/GANet.pptx), [Video](https://www.youtube.com/watch?v=tpyrxcGL_Zg&feature=youtu.be), [Poster](http://www.feihuzhang.com/GANet/GANet_poster.pdf)
 
 
 ## Building Requirements:
@@ -60,7 +60,34 @@ Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at: (w
 
 ## Results:
 
-The results should be better than those reported in the paper.
+The results of the deep model are better than those reported in the paper.
+
+#### Evaluations and Comparisons on SceneFlow Dataset
+|Models|3D conv layers|GA layers |Avg. EPE (pixel)|1-pixel Error rate (%)|
+|---|---|---|---|---|
+|GC-Net|19|-|1.8|15.6|
+|PSMNet|35|-|1.09|12.1|
+|GANet-15|15|5|0.84|9.9|
+|GANet-deep|22|9|0.78|8.7|
+
+
+#### Evaluations on KITTI 2012 benchmark
+| Models | Non-Occluded	| All Area |
+|---|---|---|
+| [GC-Net](http://www.cvlibs.net/datasets/kitti/eval_stereo_flow_detail.php?benchmark=stereo&error=3&eval=all&result=8da072a8f49d792632b8940582d5578c7d86b747)| 1.77	| 2.30 |
+| [PSMNet](http://www.cvlibs.net/datasets/kitti/eval_stereo_flow_detail.php?benchmark=stereo&error=3&eval=all&result=8da072a8f49d792632b8940582d5578c7d86b747) | 1.49	| 1.89 |
+| [GANet-15](http://www.cvlibs.net/datasets/kitti/eval_stereo_flow_detail.php?benchmark=stereo&error=3&eval=all&result=b2d616a45b7b7bda1cb9d1fd834b5d7c70e9f4cc) | 1.36 | 1.80 |
+| [GANet-deep](http://www.cvlibs.net/datasets/kitti/eval_stereo_flow_detail.php?benchmark=stereo&error=3&eval=all&result=95af4a21253204c14e9dc7ab8beb9d9b114cfb9d) | 1.19 | 1.60 |
+
+#### Evaluations on KITTI 2015 benchmark
+
+| Models | Non-Occluded	| All Area |
+|---|---|---|
+| [GC-Net](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=70b339586af7c573b33a4dad14ea4a7689dc9305) | 2.61 | 2.87 |
+| [PSMNet](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=efb9db97938e12a20b9c95ce593f633dd63a2744) | 2.14 | 2.32 |
+| [GANet-15](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=59cfbc4149e979b63b961f9daa3aa2bae021eff3) | 1.73 | 1.93 |
+| [GANet-deep](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=ccb2b24d3e08ec968368f85a4eeab8b668e70b8c) | 1.63 | 1.81 |
+
 
 ## Reference:
 
