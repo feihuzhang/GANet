@@ -17,6 +17,7 @@ We are formulating traditional geometric and optimization of stereo into deep ne
     gcc: >=5.3
     GPU mem: >=7G (for testing);  >=12G (for training, >=22G is prefered)
     pytorch: >=1.0
+    cuda: >=9.2 (9.0 doesn’t support well for the new pytorch version and may have “pybind11 errors”.)
     tested platform/settings:
       1) ubuntu 16.04 + cuda 10.0 + python 3.6, 3.7
       2) centos + cuda 9.2 + python 3.7
