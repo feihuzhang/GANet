@@ -53,7 +53,9 @@ Step 3: revise parameter settings and run "train.sh" and "predict.sh" for traini
 
 ## Pretrained models:
 
-Pretrained models on sceneflow, kitti and kitti2015 datasets are avaiable at: (will update later)
+- These pre-trained model use a batchsize of 8 on four P40 GPUs with a crop size of 240x624. 
+- Eight 1080ti/Titan GPUs should also be able to achieve the similar accuracy.
+- Eight P40/V100 would be even better.
 
 | sceneflow (for fine-tuning, only 10 epoch) | kitti2012 (after fine-tuning) | kitti2015 (after fine-tuning)|
 |---|---|---|
