@@ -96,9 +96,10 @@ The results of the deep model are better than those reported in the paper.
 
 If you find the code useful, please cite our paper:
 
-    @inproceedings{zhang2019GANet,
+    @inproceedings{Zhang2019GANet,
       title={GA-Net: Guided Aggregation Net for End-to-end Stereo Matching},
-      author={Zhang, Feihu and Prisacariu, Victor and Yang, Ruigang and Torr, Philip},
-      booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+      author={Zhang, Feihu and Prisacariu, Victor and Yang, Ruigang and Torr, Philip HS},
+      booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
+      pages={185--194},
       year={2019}
     }
