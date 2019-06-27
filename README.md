@@ -53,7 +53,7 @@ Step 3: revise parameter settings and run "train.sh" and "predict.sh" for traini
 
 ## Pretrained models:
 
-- These pre-trained model use a batchsize of 8 on four P40 GPUs with a crop size of 240x624. 
+- These pre-trained models use a batchsize of 8 on four P40 GPUs with a crop size of 240x624. 
 - Eight 1080ti/Titan GPUs should also be able to achieve the similar accuracy.
 - Eight P40/V100 would be even better.
 
