@@ -72,8 +72,8 @@ def test_transform(temp_data, crop_height, crop_width):
         temp_data = np.zeros([6, crop_height, crop_width], 'float32')
         temp_data[:, crop_height - h: crop_height, crop_width - w: crop_width] = temp
     else:
-        start_x = (w - crop_width) / 2
-        start_y = (h - crop_height) / 2
+        start_x = int((w - crop_width) / 2)
+        start_y = int(h - crop_height) / 2)
         temp_data = temp_data[:, start_y: start_y + crop_height, start_x: start_x + crop_width]
     left = np.ones([1, 3,crop_height,crop_width],'float32')
     left[0, :, :, :] = temp_data[0: 3, :, :]
@@ -123,8 +123,10 @@ def test(leftname, rightname, savename):
        
     temp = prediction.cpu()
     temp = temp.detach().numpy()
-    
-    temp = temp[0, opt.crop_height - height: opt.crop_height, opt.crop_width - width: opt.crop_width]
+    if height <= opt.crop_height and width <= opt.crop_width:
+        temp = temp[0, opt.crop_height - height: opt.crop_height, opt.crop_width - width: opt.crop_width]
+    else:
+        temp = temp[0, :, :]
     skimage.io.imsave(savename, (temp * 256).astype('uint16'))
 
    
