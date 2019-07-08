@@ -15,24 +15,27 @@ We are formulating traditional geometric and optimization of stereo into deep ne
 ## Building Requirements:
 
     gcc: >=5.3
-    GPU mem: >=7G (for testing);  >=12G (for training, >=22G is prefered)
+    GPU mem: >=6.5G (for testing);  >=11G (for training, >=22G is prefered)
     pytorch: >=1.0
     cuda: >=9.2 (9.0 doesn’t support well for the new pytorch version and may have “pybind11 errors”.)
     tested platform/settings:
       1) ubuntu 16.04 + cuda 10.0 + python 3.6, 3.7
       2) centos + cuda 9.2 + python 3.7
 
-## Notice:
+## Install Pytorch:
+You can easily install pytorch (>=1.0) by "pip install" to run the code. See this https://github.com/feihuzhang/GANet/issues/24
 
-Installing pytorch from source helps solve most of the errors (lib conflicts).
+But, if you have trouble (lib conflicts) when compiling cuda libs,
+installing pytorch from source would help solve most of the errors (lib conflicts).
 
 Please refer to https://github.com/pytorch/pytorch about how to reinstall pytorch from source.
 
 ## How to Use?
 
-step 1: compile the libs by "sh compile.sh"
+Step 1: compile the libs by "sh compile.sh"
+- Change the environmental variable ($PATH, $LD_LIBRARY_PATH etc.), if it's not set correctly in your system environment (e.g. .bashrc). Examples are included in "compile.sh".
 
-step 2: download and prepare the dataset
+Step 2: download and prepare the dataset
 
     download SceneFLow dataset: "FlyingThings3D", "Driving" and "Monkaa" (final pass and disparity files).
   
@@ -55,7 +58,7 @@ Step 3: revise parameter settings and run "train.sh" and "predict.sh" for traini
 
 - These pre-trained models use a batchsize of 8 on four P40 GPUs with a crop size of 240x624. 
 - Eight 1080ti/Titan GPUs should also be able to achieve the similar accuracy.
-- Eight P40/V100 would be even better.
+- Eight P40/V100/Titan RTX (22G) GPUs would be even better.
 
 | sceneflow (for fine-tuning, only 10 epoch) | kitti2012 (after fine-tuning) | kitti2015 (after fine-tuning)|
 |---|---|---|
