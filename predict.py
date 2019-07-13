@@ -73,7 +73,7 @@ def test_transform(temp_data, crop_height, crop_width):
         temp_data[:, crop_height - h: crop_height, crop_width - w: crop_width] = temp
     else:
         start_x = int((w - crop_width) / 2)
-        start_y = int(h - crop_height) / 2)
+        start_y = int((h - crop_height) / 2)
         temp_data = temp_data[:, start_y: start_y + crop_height, start_x: start_x + crop_width]
     left = np.ones([1, 3,crop_height,crop_width],'float32')
     left[0, :, :, :] = temp_data[0: 3, :, :]
