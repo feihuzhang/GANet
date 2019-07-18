@@ -21,7 +21,7 @@ import torch.nn.functional as F
 from dataloader.data import get_training_set, get_test_set
 
 # Training settings
-parser = argparse.ArgumentParser(description='PyTorch GC-Net Example')
+parser = argparse.ArgumentParser(description='PyTorch GANet Example')
 parser.add_argument('--crop_height', type=int, required=True, help="crop height")
 parser.add_argument('--max_disp', type=int, default=192, help="max disp")
 parser.add_argument('--crop_width', type=int, required=True, help="crop width")
