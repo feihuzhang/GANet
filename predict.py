@@ -21,7 +21,7 @@ from dataloader.data import get_test_set
 import numpy as np
 
 # Training settings
-parser = argparse.ArgumentParser(description='PyTorch GC-Net Example')
+parser = argparse.ArgumentParser(description='PyTorch GANet Example')
 parser.add_argument('--crop_height', type=int, required=True, help="crop height")
 parser.add_argument('--crop_width', type=int, required=True, help="crop width")
 parser.add_argument('--resume', type=str, default='', help="resume from saved model")
