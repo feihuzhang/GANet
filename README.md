@@ -94,6 +94,17 @@ The results of the deep model are better than those reported in the paper.
 | [GANet-15](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=59cfbc4149e979b63b961f9daa3aa2bae021eff3) | 1.73 | 1.93 |
 | [GANet-deep](http://www.cvlibs.net/datasets/kitti/eval_scene_flow_detail.php?benchmark=stereo&result=ccb2b24d3e08ec968368f85a4eeab8b668e70b8c) | 1.63 | 1.81 |
 
+## Great Generalization Abilities:
+GANet has great generalization abilities on other datasets/scenes.
+
+#### Cityscape
+<img src="illustration/cityscape_029736.png" width="800" /> <img src="illustration/cityscape_disp.png" width="800" />
+
+#### Middlebury
+
+<img src="illustration/Crusade.png" width="400" /> <img src="illustration/Crusade_disp.png" width="400" />
+<img src="illustration/Bicycle2.png" width="400" /> <img src="illustration/Bicycle2_disp.png" width="400"/>
+
 
 ## Reference:
 
