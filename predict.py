@@ -24,6 +24,7 @@ import numpy as np
 parser = argparse.ArgumentParser(description='PyTorch GANet Example')
 parser.add_argument('--crop_height', type=int, required=True, help="crop height")
 parser.add_argument('--crop_width', type=int, required=True, help="crop width")
+parser.add_argument('--max_disp', type=int, default=192, help="max disp")
 parser.add_argument('--resume', type=str, default='', help="resume from saved model")
 parser.add_argument('--cuda', type=bool, default=True, help='use cuda?')
 parser.add_argument('--kitti', type=int, default=0, help='kitti dataset? Default=False')
@@ -49,7 +50,7 @@ if cuda and not torch.cuda.is_available():
 
 
 print('===> Building model')
-model = GANet()
+model = GANet(opt.max_disp)
 
 if cuda:
     model = torch.nn.DataParallel(model).cuda()
