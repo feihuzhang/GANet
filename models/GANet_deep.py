@@ -279,9 +279,9 @@ class SGABlock(nn.Module):
 
 
 class CostAggregation(nn.Module):
-    def __init__(self):
+    def __init__(self, maxdisp=192):
         super(CostAggregation, self).__init__()
-
+        self.maxdisp = maxdisp
         self.conv_start = BasicConv(64, 32, is_3d=True, kernel_size=3, padding=1, relu=False)
 
         self.conv1a = BasicConv(32, 48, is_3d=True, kernel_size=3, stride=2, padding=1)
@@ -310,9 +310,9 @@ class CostAggregation(nn.Module):
         self.sga13 = SGABlock(channels=48, refine=True)
         self.sga14 = SGABlock(channels=48, refine=True)
 
-        self.disp0 = Disp(maxdisp=192)
-        self.disp1 = Disp(maxdisp=192)
-        self.disp2 = DispAgg(maxdisp=192)
+        self.disp0 = Disp(self.maxdisp)
+        self.disp1 = Disp(self.maxdisp)
+        self.disp2 = DispAgg(self.maxdisp)
 
 
     def forward(self, x, g):
@@ -359,8 +359,9 @@ class CostAggregation(nn.Module):
         return disp0, disp1, disp2
 
 class GANet(nn.Module):
-    def __init__(self):
+    def __init__(self, maxdisp=192):
         super(GANet, self).__init__()
+        self.maxdisp = maxdisp
         self.conv_start = nn.Sequential(BasicConv(3, 16, kernel_size=3, padding=1),
                                         BasicConv(16, 32, kernel_size=3, padding=1))
 
@@ -371,8 +372,8 @@ class GANet(nn.Module):
                                      nn.ReLU(inplace=True))
         self.feature = Feature()
         self.guidance = Guidance()
-        self.cost_agg = CostAggregation()
-        self.cv = GetCostVolume(maxdisp=64)
+        self.cost_agg = CostAggregation(self.maxdisp)
+        self.cv = GetCostVolume(int(self.maxdisp/3))
 
         for m in self.modules():
             if isinstance(m, (nn.Conv2d, nn.Conv3d)):
