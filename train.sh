@@ -1,6 +1,7 @@
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
                 --crop_height=240 \
                 --crop_width=528 \
+                --max_disp=192 \
                 --thread=16 \
                 --data_path='/ssd1/zhangfeihu/data/stereo/' \
                 --training_list='lists/sceneflow_train.list' \
@@ -13,6 +14,7 @@ exit
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
                 --crop_height=240 \
                 --crop_width=528 \
+                --max_disp=192 \
                 --thread=16 \
                 --data_path='/media/feihu/Storage/stereo/data_scene_flow/training/' \
                 --training_list='lists/kitti2015_train.list' \
@@ -25,6 +27,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=8 \
                 --crop_height=240 \
                 --crop_width=1248 \
+                --max_disp=192 \
                 --thread=16 \
                 --data_path='/media/feihu/Storage/stereo/data_scene_flow/training/' \
                 --training_list='lists/kitti2015_train.list' \
@@ -40,6 +43,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=8 \
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
                 --crop_height=240 \
                 --crop_width=528 \
+                --max_disp=192 \
                 --thread=16 \
                 --data_path='/media/feihu/Storage/stereo/kitti/training/' \
                 --training_list='lists/kitti2012_train.list' \
@@ -52,6 +56,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=16 \
 CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 python train.py --batchSize=8 \
                 --crop_height=240 \
                 --crop_width=1248 \
+                --max_disp=192 \
                 --thread=16 \
                 --data_path='/media/feihu/Storage/stereo/kitti/training/' \
                 --training_list='lists/kitti2012_train.list' \
