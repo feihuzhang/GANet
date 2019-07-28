@@ -120,7 +120,7 @@ def test(leftname, rightname, savename):
         input1 = input1.cuda()
         input2 = input2.cuda()
     with torch.no_grad():
-        pre, second, prediction = model(input1, input2)
+        prediction = model(input1, input2)
      
     temp = prediction.cpu()
     temp = temp.detach().numpy()
