@@ -62,7 +62,7 @@ training_data_loader = DataLoader(dataset=train_set, num_workers=opt.threads, ba
 testing_data_loader = DataLoader(dataset=test_set, num_workers=opt.threads, batch_size=opt.testBatchSize, shuffle=False)
 
 print('===> Building model')
-model = GANet()
+model = GANet(opt.max_disp)
 
 criterion = MyLoss2(thresh=3, alpha=2)
 if cuda:
