@@ -136,10 +136,8 @@ def train(epoch):
     print("===> Epoch {} Complete: Avg. Loss: {:.4f}, Avg. Error: ({:.4f} {:.4f} {:.4f})".format(epoch, epoch_loss / valid_iteration,epoch_error0/valid_iteration,epoch_error1/valid_iteration,epoch_error2/valid_iteration))
 
 def val():
-    epoch_loss1 = 0
-    epoch_loss2 = 0
-    epoch_loss3 = 0
-    epoch_loss4 = 0
+    epoch_error2 = 0
+
     valid_iteration = 0
     model.eval()
     for iteration, batch in enumerate(testing_data_loader):
@@ -148,26 +146,20 @@ def val():
             input1 = input1.cuda()
             input2 = input2.cuda()
             target = target.cuda()
-        target=torch.squeeze(target,1)
+        target = torch.squeeze(target, 1)
         mask = target < opt.max_disp
         mask.detach_()
-        valid=target[mask].size()[0]
+        valid = target[mask].size()[0]
         if valid>0:
             with torch.no_grad():
-                disp0, disp1, disp2 = model(input1,input2)
-                error0 = torch.mean(torch.abs(disp0[mask] - target[mask])) 
-                error1 = torch.mean(torch.abs(disp1[mask] - target[mask]))
+                disp2 = model(input1,input2)
                 error2 = torch.mean(torch.abs(disp2[mask] - target[mask]))
-
-                epoch_loss += loss.item()
                 valid_iteration += 1
-                epoch_error0 += error0.item()
-                epoch_error1 += error1.item()
                 epoch_error2 += error2.item()      
-                print("===> Test({}/{}): Error: ({:.4f} {:.4f} {:.4f})".format(iteration, len(testing_data_loader), error0.item(), error1.item(), error2.item()))
+                print("===> Test({}/{}): Error: ({:.4f})".format(iteration, len(testing_data_loader), error2.item()))
 
-    print("===> Test: Avg. Error: ({:.4f} {:.4f} {:.4f})".format(epoch_error0/valid_iteration, epoch_error1/valid_iteration, epoch_error2/valid_iteration))
-    return epoch_error2/valid_iteration
+    print("===> Test: Avg. Error: ({:.4f})".format(epoch_error2 / valid_iteration))
+    return epoch_error2 / valid_iteration
 
 def save_checkpoint(save_path, epoch,state, is_best):
     filename = save_path + "_epoch_{}.pth".format(epoch)
