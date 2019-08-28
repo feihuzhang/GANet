@@ -16,7 +16,7 @@ import torch.backends.cudnn as cudnn
 import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
-from models.GANet_deep import GANet
+#from models.GANet_deep import GANet
 from dataloader.data import get_test_set
 import numpy as np
 
@@ -32,12 +32,19 @@ parser.add_argument('--kitti2015', type=int, default=0, help='kitti 2015? Defaul
 parser.add_argument('--data_path', type=str, required=True, help="data root")
 parser.add_argument('--test_list', type=str, required=True, help="training list")
 parser.add_argument('--save_path', type=str, default='./result/', help="location to save result")
+parser.add_argument('--model', type=str, default='GANet_deep', help="model to train")
 
 opt = parser.parse_args()
 
 
 print(opt)
-
+if opt.model == 'GANet11':
+    from models.GANet11 import GANet
+elif opt.model == 'GANet_deep':
+    from models.GANet_deep import GANet
+else:
+    raise Exception("No suitable model found ...")
+    
 cuda = opt.cuda
 #cuda = True
 if cuda and not torch.cuda.is_available():
