@@ -13,10 +13,7 @@ import torch.backends.cudnn as cudnn
 import torch.optim as optim
 from torch.autograd import Variable
 from torch.utils.data import DataLoader
-#from net2 import Net
-#from model import Baseline
-#from models.GANet15 import GANet
-from models.GANet_deep import GANet
+#from models.GANet_deep import GANet
 import torch.nn.functional as F
 from dataloader.data import get_training_set, get_test_set
 
@@ -41,11 +38,18 @@ parser.add_argument('--data_path', type=str, default='/ssd1/zhangfeihu/data/ster
 parser.add_argument('--training_list', type=str, default='./lists/sceneflow_train.list', help="training list")
 parser.add_argument('--val_list', type=str, default='./lists/sceneflow_test_select.list', help="validation list")
 parser.add_argument('--save_path', type=str, default='./checkpoint/', help="location to save models")
+parser.add_argument('--model', type=str, default='GANet_deep', help="model to train")
 
 opt = parser.parse_args()
 
 print(opt)
-
+if opt.model == 'GANet11':
+    from models.GANet11 import GANet
+elif opt.model == 'GANet_deep':
+    from models.GANet_deep import GANet
+else:
+    raise Exception("No suitable model found ...")
+    
 cuda = opt.cuda
 #cuda = True
 if cuda and not torch.cuda.is_available():
@@ -78,9 +82,6 @@ if opt.resume:
         print("=> no checkpoint found at '{}'".format(opt.resume))
 
 
-
-
-
 def train(epoch):
     epoch_loss = 0
     epoch_error0 = 0
@@ -100,16 +101,24 @@ def train(epoch):
         mask.detach_()
         valid = target[mask].size()[0]
         if valid > 0:
-
             optimizer.zero_grad()
-            disp0, disp1, disp2=model(input1,input2)
-
-            if opt.kitti or opt.kitti2015:
-                loss = 0.2 * F.smooth_l1_loss(disp0[mask], target[mask], reduction='mean') + 0.6 * F.smooth_l1_loss(disp1[mask], target[mask], reduction='mean') +  criterion(disp2[mask], target[mask])
-#                loss = 0.2 * F.smooth_l1_loss(disp0[mask], target[mask], reduction='mean') + 0.6 * F.smooth_l1_loss(disp1[mask], target[mask], reduction='mean') +  F.smooth_l1_loss(disp2[mask], target[mask], reduction='mean')
+            
+            if opt.model == 'GANet11':
+                disp1, disp2 = model(input1, input2)
+                disp0 = (disp1 + disp2)/2.
+                if opt.kitti or opt.kitti2015:
+                    loss = 0.4 * F.smooth_l1_loss(disp1[mask], target[mask], reduction='mean') + 1.2 * criterion(disp2[mask], target[mask])
+                else:
+                    loss = 0.4 * F.smooth_l1_loss(disp1[mask], target[mask], reduction='mean') + 1.2 * F.smooth_l1_loss(disp2[mask], target[mask], reduction='mean')
+            elif opt.model == 'GANet_deep':
+                disp0, disp1, disp2 = model(input1, input2)
+                if opt.kitti or opt.kitti2015:
+                    loss = 0.2 * F.smooth_l1_loss(disp0[mask], target[mask], reduction='mean') + 0.6 * F.smooth_l1_loss(disp1[mask], target[mask], reduction='mean') +  criterion(disp2[mask], target[mask])
+                else:
+                    loss = 0.2 * F.smooth_l1_loss(disp0[mask], target[mask], reduction='mean') + 0.6 * F.smooth_l1_loss(disp1[mask], target[mask], reduction='mean') +  F.smooth_l1_loss(disp2[mask], target[mask], reduction='mean')
             else:
-                loss = 0.2 * F.smooth_l1_loss(disp0[mask], target[mask], reduction='mean') + 0.6 * F.smooth_l1_loss(disp1[mask], target[mask], reduction='mean') +  F.smooth_l1_loss(disp2[mask], target[mask], reduction='mean')
-#            loss = 0.2 * criterion(disp0[mask], target[mask]) + 0.6 * criterion(disp1[mask], target[mask]) + criterion(disp2[mask], target[mask])
+                raise Exception("No suitable model found ...")
+                
             loss.backward()
             optimizer.step()
             error0 = torch.mean(torch.abs(disp0[mask] - target[mask])) 
