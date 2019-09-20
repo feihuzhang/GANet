@@ -10,8 +10,6 @@ from libs.sync_bn.modules.sync_bn import BatchNorm2d, BatchNorm3d
 import torch.nn.functional as F
 from torch.autograd import Variable
 import numpy as np
-
-nn.AvgPool2d(kernel_size=31, stride=1, padding=15, count_include_pad=False)
 class BasicConv(nn.Module):
 
     def __init__(self, in_channels, out_channels, deconv=False, is_3d=False, bn=True, relu=True, **kwargs):
