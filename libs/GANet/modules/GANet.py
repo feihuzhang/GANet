@@ -136,8 +136,8 @@ class GetCostVolume(Module):
  
 class DisparityRegression(Module):
     def __init__(self, maxdisp):
-        super(DisparityRegression, self).__init__()
-	self.maxdisp = maxdisp + 1
+       super(DisparityRegression, self).__init__()
+       self.maxdisp = maxdisp + 1
 #        self.disp = Variable(torch.Tensor(np.reshape(np.array(range(self.maxdisp)),[1,self.maxdisp,1,1])).cuda(), requires_grad=False)
 
     def forward(self, x):
