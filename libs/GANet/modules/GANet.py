@@ -37,7 +37,7 @@ class MyLoss2(Module):
         self.thresh = thresh
         self.alpha = alpha
     def forward(self, input1, input2):
-        result = MyLoss2Function(self.thresh, self.alpha)(input1, input2)
+        result = MyLoss2Function.apply(input1, input2, self.thresh, self.alpha)
         return result
 class MyLoss(Module):
     def __init__(self, upper_thresh=5, lower_thresh=1):
@@ -45,9 +45,8 @@ class MyLoss(Module):
         self.upper_thresh = 5
         self.lower_thresh = 1
     def forward(self, input1, input2):
-        result = MyLossFunction(self.upper_thresh, self.lower_thresh)(input1, input2)
+        result = MyLossFunction.apply(input1, input2, self.upper_thresh, self.lower_thresh)
         return result
-
 		
 
 class SGA(Module):
@@ -55,7 +54,7 @@ class SGA(Module):
         super(SGA, self).__init__()
 
     def forward(self, input, g0, g1, g2, g3):
-        result = SgaFunction()(input, g0, g1, g2, g3)
+        result = SgaFunction.apply(input, g0, g1, g2, g3)
         return result
 		
 
@@ -66,7 +65,7 @@ class LGA3D3(Module):
         self.radius = radius
 
     def forward(self, input1, input2):
-        result = Lga3d3Function(self.radius)(input1, input2)
+        result = Lga3d3Function.apply(input1, input2, self.radius)
         return result
 class LGA3D2(Module):
     def __init__(self, radius=2):
@@ -74,7 +73,7 @@ class LGA3D2(Module):
         self.radius = radius
 
     def forward(self, input1, input2):
-        result = Lga3d2Function(self.radius)(input1, input2)
+        result = Lga3d2Function.apply(input1, input2, self.radius)
         return result
 class LGA3D(Module):
     def __init__(self, radius=2):
@@ -82,7 +81,7 @@ class LGA3D(Module):
         self.radius = radius
 
     def forward(self, input1, input2):
-        result = Lga3dFunction(self.radius)(input1, input2)
+        result = Lga3dFunction.apply(input1, input2, self.radius)
         return result		
 		
 class LGA3(Module):
@@ -91,7 +90,7 @@ class LGA3(Module):
         self.radius = radius
 
     def forward(self, input1, input2):
-        result = Lga3Function(self.radius)(input1, input2)
+        result = Lga3Function.apply(input1, input2, self.radius)
         return result
 class LGA2(Module):
     def __init__(self, radius=2):
@@ -99,7 +98,7 @@ class LGA2(Module):
         self.radius = radius
 
     def forward(self, input1, input2):
-        result = Lga2Function(self.radius)(input1, input2)
+        result = Lga2Function.apply(input1, input2, self.radius)
         return result
 class LGA(Module):
     def __init__(self, radius=2):
@@ -107,7 +106,7 @@ class LGA(Module):
         self.radius = radius
 
     def forward(self, input1, input2):
-        result = LgaFunction(self.radius)(input1, input2)
+        result = LgaFunction.apply(input1, input2, self.radius)
         return result
 		
 
