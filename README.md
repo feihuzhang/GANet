@@ -21,6 +21,7 @@ We are formulating traditional geometric and optimization of stereo into deep ne
     tested platform/settings:
       1) ubuntu 16.04 + cuda 10.0 + python 3.6, 3.7
       2) centos + cuda 9.2 + python 3.7
+      
 
 ## Install Pytorch:
 You can easily install pytorch (>=1.0) by "pip install" to run the code. See this https://github.com/feihuzhang/GANet/issues/24
@@ -34,6 +35,14 @@ Please refer to https://github.com/pytorch/pytorch about how to reinstall pytorc
 
 Step 1: compile the libs by "sh compile.sh"
 - Change the environmental variable ($PATH, $LD_LIBRARY_PATH etc.), if it's not set correctly in your system environment (e.g. .bashrc). Examples are included in "compile.sh".
+- If you met the BN error, try to replace the sync-bn with another version:
+    1) Install NVIDIA-Apex package https://github.com/NVIDIA/apex
+          $ git clone https://github.com/NVIDIA/apex
+          $ cd apex
+          $ pip install -v --no-cache-dir --global-option="--cpp_ext" --global-option="--cuda_ext" ./
+    2) Revise the "GANet_deep.py":
+    add `import apex` 
+    change all `BatchNorm2d` and `BatchNorm3d` to `apex.parallel.SyncBatchNorm`
 
 Step 2: download and prepare the dataset
 
